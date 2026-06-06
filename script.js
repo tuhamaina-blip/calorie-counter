@@ -1,4 +1,3 @@
-// Load from localStorage or start empty
 let foods = JSON.parse(localStorage.getItem("foods")) || [];
 
 const form = document.getElementById("foodForm");
@@ -6,21 +5,25 @@ const foodList = document.getElementById("foodList");
 const totalEl = document.getElementById("total");
 const resetBtn = document.getElementById("resetBtn");
 
-// Render function
+// Render everything
 function renderFoods() {
     foodList.innerHTML = "";
 
     let total = 0;
 
     foods.forEach((food, index) => {
-        total = Number(food.calories);
+        total += Number(food.calories);
 
         const li = document.createElement("li");
         li.className = "flex justify-between bg-gray-200 p-2 rounded";
 
         li.innerHTML = `
             <span>${food.name} - ${food.calories} kcal</span>
-            <button onclick="removeFood(${index})" class="text-red-600">X</button>
+
+            <div class="space-x-2">
+                <button onclick="editFood(${index})" class="text-blue-600">Edit</button>
+                <button onclick="removeFood(${index})" class="text-red-600">X</button>
+            </div>
         `;
 
         foodList.appendChild(li);
@@ -38,7 +41,10 @@ form.addEventListener("submit", (e) => {
     const name = document.getElementById("foodName").value;
     const calories = document.getElementById("calories").value;
 
-    foods.push({ name, calories });
+    foods.push({
+        name,
+        calories: Number(calories)
+    });
 
     form.reset();
     renderFoods();
@@ -55,11 +61,25 @@ function removeFood(index) {
     renderFoods();
 }
 
+// Edit food
+function editFood(index) {
+    const newName = prompt("Edit food name:", foods[index].name);
+    const newCalories = prompt("Edit calories:", foods[index].calories);
+
+    if (newName && newCalories) {
+        foods[index] = {
+            name: newName,
+            calories: Number(newCalories)
+        };
+        renderFoods();
+    }
+}
+
 // Reset
 resetBtn.addEventListener("click", () => {
     foods = [];
     renderFoods();
 });
 
-// Initial render
+// Initial load
 renderFoods();
