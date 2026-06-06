@@ -8,22 +8,24 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-6 rounded-xl shadow w-full max-w-md">
-        <h1 class="text-2xl font-bold mb-4 text-center">Calorie Counter</h1>
+    <div class="bg-white p-6 rounded-xl shadow-md w-full max-w-md border border-gray-200">
+        
+        <h1 class="text-2xl font-bold mb-4 text-center text-gray-800">Calorie Counter</h1>
 
         <!-- FORM -->
         <form id="foodForm" class="space-y-3">
-            <input type="text" id="foodName" placeholder="Food name" 
-            class="w-full border p-2 rounded" required>
+            <input type="text" id="foodName" placeholder="Food name"
+                class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-orange-500" required>
 
-            <input type="number" id="calories" placeholder="Calories" 
-            class="w-full border p-2 rounded" required>
+            <input type="number" id="calories" placeholder="Calories"
+                class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-orange-500" required>
 
-            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">Add Food</button>
+            <button class="w-full bg-orange-500 text-white py-2 rounded font-semibold hover:bg-orange-600 transition"> Add Food</button>
         </form>
 
         <!-- TOTAL -->
-        <div class="mt-4 text-lg font-semibold">Total Calories: <span id="total">0</span>
+        <div class="mt-4 text-lg font-semibold text-gray-700">
+            Total Calories: <span id="total" class="text-gray-900">0</span>
         </div>
 
         <!-- LIST -->
@@ -31,7 +33,8 @@
 
         <!-- RESET -->
         <button id="resetBtn"
-            class="mt-4 w-full bg-red-500 text-white py-2 rounded hover:bg-red-600">Reset Day</button>
+            class="mt-4 w-full bg-gray-800 text-white py-2 rounded font-semibold hover:bg-gray-700 transition">Reset Day</button>
+
     </div>
 
     <script src="script.js"></script>
