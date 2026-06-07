@@ -1,7 +1,9 @@
 # Calorie Counter App
 
 This is a simple calorie tracking web app built using HTML, Tailwind CSS, and JavaScript. It allows users to add food items with their calorie values, view a running total, and manage their daily intake.
+
 The project demonstrates basic frontend development skills such as DOM manipulation, event handling, and data persistence using localStorage.
+
 ---
 
 ## Features
